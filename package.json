@@ -1,0 +1,31 @@
+{
+	"name": "backlog-manager",
+	"version": "0.0.1",
+	"description": "Task manager for managing project development. Work with backlog and tasks in multiple project. Created as DEMO for JumboJS framework.",
+	"author": {
+		"name": "Roman Jámbor",
+		"email": "hookcze@gmail.com"
+	},
+	"main": "app.js",
+	"dependencies": {
+		"unimapperjs": "0.0.2",
+		"jumbo-core": "^0.2.11"
+	},
+	"devDependencies": {
+		"less-watch-compiler": "^1.11.0"
+	},
+	"engines": {
+		"node": ">=7.7.0"
+	},
+	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "https://....git"
+	},
+	"scripts": {
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"app": "node app.js",
+		"compile-less": "./node_modules/.bin/less-watch-compiler --run-once \"public/styles\" \"./\"",
+		"watch-less": "./node_modules/.bin/less-watch-compiler \"./public/styles\" \"./\""
+	}
+}
