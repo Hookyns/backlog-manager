@@ -57,7 +57,7 @@ const applicationConfig = {
 		 * 0 for automatic clustering driven by number of CPU's cores
 		 * @default 0
 		 */
-		numberOfWorkers: 0
+		numberOfWorkers: 1
 	},
 
 	/**
