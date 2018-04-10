@@ -8,8 +8,9 @@
 	},
 	"main": "app.js",
 	"dependencies": {
-		"unimapperjs": "latest",
-		"jumbo-core": "^0.2.11"
+		"jumbo-core": "^0.2.11",
+		"mysql2": "^1.5.3",
+		"unimapperjs": "^1.0.1"
 	},
 	"devDependencies": {
 		"less-watch-compiler": "^1.11.0"
@@ -20,12 +21,14 @@
 	"license": "MIT",
 	"repository": {
 		"type": "git",
-		"url": "https://....git"
+		"url": "https://github.com/Hookyns/backlog-manager.git"
 	},
 	"scripts": {
 		"start": "node app.js",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"compile-less": "./node_modules/.bin/less-watch-compiler --run-once \"public/styles\" \"./\"",
-		"watch-less": "./node_modules/.bin/less-watch-compiler \"./public/styles\" \"./\""
+		"watch-less": "./node_modules/.bin/less-watch-compiler \"./public/styles\" \"./\"",
+		"create-migration": "node ./scripts/create-migration.js",
+		"run-migration": "node ./scripts/run-migration.js"
 	}
 }
