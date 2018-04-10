@@ -8,7 +8,7 @@
 	},
 	"main": "app.js",
 	"dependencies": {
-		"unimapperjs": "0.0.2",
+		"unimapperjs": "latest",
 		"jumbo-core": "^0.2.11"
 	},
 	"devDependencies": {
@@ -23,8 +23,8 @@
 		"url": "https://....git"
 	},
 	"scripts": {
+		"start": "node app.js",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"app": "node app.js",
 		"compile-less": "./node_modules/.bin/less-watch-compiler --run-once \"public/styles\" \"./\"",
 		"watch-less": "./node_modules/.bin/less-watch-compiler \"./public/styles\" \"./\""
 	}

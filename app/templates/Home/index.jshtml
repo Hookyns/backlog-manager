@@ -1,0 +1,30 @@
+{{block content}}
+	<h1>{{block title}}Homepage{{/block}}</h1>
+	<h2>{{$subtitle}}</h2>
+
+	{{if $user.age < 18}}
+		{{include "../not-allowed.jshtml"}}
+	{{/if}}
+
+	{{* Declare variable inside template *}}
+	{{var $date = new Date()}}
+	Current time: <b>{{$date}}</b>
+
+	{{* Log $date into browser console *}}
+	{{debug $date}}
+
+	<ul>
+		{{for $item of $items}}
+			<li>
+				{{$item.name}} (My key is: {{$itemKey}})
+				{{last}}
+					and I'm the last one | wut?
+				{{/last}}
+			</li>
+		{{/for}}
+	</ul>
+
+	<section>
+		{{!$htmlStyledContent}}
+	</section>
+{{/block}}

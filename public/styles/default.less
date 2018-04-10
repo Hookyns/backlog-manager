@@ -17,60 +17,75 @@ html, body {
 }
 
 html {
-	font: normal 1rem Arial;
+	font: normal 1rem 'Segoe UI';
+	font-family: 'Segoe UI', 'Open Sans', 'Roboto', Arial, sans-serif;
 	color: #333;
 
 	body {
-		background: #fff;
+		background: #fafafa;
+		padding-top: 60px;
 
 		h1, h2 {
-			font-weight: normal;
+			font-weight: 300;
+			font-family: 'Open Sans', Arial, sans-serif;
 			margin: 0.25em 0 0.4em 0;
 		}
 
 		> .header {
-			display: table;
+			position: fixed;
+			left: 0;
+			top: 0;
+			right: 0;
+			height: 60px;
+			//background: #eeeeea;
+			//background: #f5f5f8;
+			background: #ecedf0;
+			line-height: 60px;
+			padding-left: 1rem;
+			border-bottom: 1px solid #ddd;
+			font-weight: 300;
+
+			img.jumbo-icon {
+				width: auto;
+				height: 30px;
+			}
+		}
+
+		> .sub-header {
 			width: 100%;
-			height: 100%;
+			padding-top: 0.5em;
+			overflow: hidden;
 
-			> header {
-				//background: #333;
-				//padding: 20px 20px;
-				//color: #fff;
-				//margin-top: 10rem;
-				display: table-cell;
-				vertical-align: middle;
+			padding-bottom: 0.5em;
+			background-color: #f4f4f4;
+			border-bottom: 1px solid #eaeaea;
 
-				h1, h2 {
-					text-align: center;
-					font-weight: 100;
-				}
+			ul {
+				list-style-type: none;
 
-				h1 {
-					font-size: 5rem;
-				}
-
-				h2 {
-					font-size: 2rem;
+				li {
+					float: left;
+					padding: 0 1em;
 				}
 			}
 		}
 
 		a {
 			color: #333;
-		}
-	}
 
-	main {
-		background: #f5f5f8;
-		padding: 4rem 25% 20px 25%;
-
-		> h1 {
-			font-size: 2.5rem;
+			&:hover {
+				color: #278060;
+				text-decoration: none;
+			}
 		}
 	}
 }
 
-#test {
-	content: "Fuck,ono to funguje :D ROFL. Once funguje taky?"
+main {
+	padding: 1rem;
+	//padding: 4rem 25% 20px 25%;
+
+	> h1 {
+		font-size: 2.5rem;
+	}
 }

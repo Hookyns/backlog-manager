@@ -1,4 +1,4 @@
-const $cfg = require("jumbo-core/config").Configurations;
+const $cfg = require("jumbo-core/config-options").Configurations;
 const $umjs = require("unimapperjs");
 const MySqlAdapter = require("unimapperjs/adapters/MySqlAdapter");
 
@@ -170,12 +170,7 @@ const applicationConfig = {
 		/**
 		 * Allow using languages
 		 */
-		enabled: true,
-
-		/**
-		 * Default language (used for URL without language)
-		 */
-		defaultLanguage: "en"
+		enabled: true
 	},
 
 	/**
