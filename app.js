@@ -19,4 +19,10 @@ require("./bootstrap/di-registrar")(application.getDIContainer());
 // Register application for run at port 80; It'll run after framework do all async jobs
 application.runWhenReady(3000, function() {
 	// You can do something after start
+
+	// Extend template helpers
+	require("./adapters/template/JumplateExtended");
+
+	// const {ProjectCreateModel} = require("./app/models/ProjectCreateModel");
+	// let projectCreateModel = new ProjectCreateModel();
 });

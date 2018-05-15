@@ -1,0 +1,17 @@
+{{block content}}
+<h1>{{block title}}{{loc project.detail.title}}{{/block}}</h1>
+
+<ul class="actions">
+	<li>
+		<a href='{{link("index")}}'>{{loc common.back.btn}}</a>
+	</li>
+	<li>
+		<a href='{{link("delete", "Project", { id: $project.id })}}'
+		   onclick="return confirm('{{loc common.delete.confirmation}}')">{{loc common.delete.btn}}</a>
+	</li>
+</ul>
+<hr>
+
+{{include "_form.jshtml"}}
+
+{{/block}}

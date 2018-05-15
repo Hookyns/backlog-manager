@@ -1,0 +1,31 @@
+{{block content}}
+<h1>{{block title}}Task{{/block}}</h1>
+
+<ul class="actions">
+	<li>
+		<a href='{{locationLink("default", "detail", "Backlog", { id: $backlogId } )}}'>{{loc common.back.btn}}</a>
+	</li>
+	<li>
+		<i class="fa fa-plus"></i>
+		<a href='{{link("insert", "Task", { backlogId: $backlogId })}}'>{{loc task.create}}</a>
+	</li>
+</ul>
+
+<hr>
+
+<div class="row">
+	<table id="tasks" class="display grid table table-striped table-bordered">
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>{{loc task.list.name}}</th>
+			<th>{{loc task.list.description}}</th>
+			<th></th>
+		</tr>
+		</thead>
+	</table>
+</div>
+
+{{clientController({ backlogId: $backlogId })}}
+
+{{/block}}

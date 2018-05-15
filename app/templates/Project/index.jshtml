@@ -1,0 +1,27 @@
+{{block content}}
+<h1>{{block title}}Projekty{{/block}}</h1>
+
+<ul class="actions">
+	<li>
+		<i class="fa fa-plus"></i>
+		<a href='{{link("insert", "Project")}}'>{{loc project.create}}</a>
+	</li>
+</ul>
+
+<hr>
+
+<div class="row">
+	<table id="projects" class="display grid table table-striped table-bordered">
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>{{loc project.list.name}}</th>
+			<th>{{loc project.list.description}}</th>
+			<th></th>
+		</tr>
+		</thead>
+	</table>
+</div>
+{{clientController()}}
+
+{{/block}}

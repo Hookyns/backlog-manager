@@ -8,9 +8,12 @@
 	},
 	"main": "app.js",
 	"dependencies": {
+		"@types/datatables.net": "^1.10.9",
+		"@types/jquery": "^3.3.1",
 		"jumbo-core": "^0.2.11",
+		"jumbo-template": "^0.2.2",
 		"mysql2": "^1.5.3",
-		"unimapperjs": "^1.0.1"
+		"unimapperjs": "^1.1.4"
 	},
 	"devDependencies": {
 		"less-watch-compiler": "^1.11.0"
@@ -29,6 +32,7 @@
 		"compile-less": "./node_modules/.bin/less-watch-compiler --run-once \"public/styles\" \"./\"",
 		"watch-less": "./node_modules/.bin/less-watch-compiler \"./public/styles\" \"./\"",
 		"create-migration": "node ./scripts/create-migration.js",
-		"run-migration": "node ./scripts/run-migration.js"
+		"run-migration": "node ./scripts/run-migration.js",
+		"seeding": "node ./scripts/run-seeding.js"
 	}
 }

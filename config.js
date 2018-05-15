@@ -16,7 +16,7 @@ const applicationConfig = {
 	/**
 	 * For debuging; disable clustering and run app in one debugable process
 	 */
-	debugMode: true,
+	// debugMode: false,
 
 	/**
 	 * Protocol setting
@@ -164,7 +164,7 @@ const applicationConfig = {
 	},
 
 	/**
-	 * Allows you to use more languages (defined in URL right after first slash; eg. domain.tld/en/page/article/1)
+	 * Allows you to use more languages (defined in URL right after first slash; eg. domain.tld/en-us/page/article/1)
 	 */
 	globalization: {
 		/**

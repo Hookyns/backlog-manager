@@ -1,0 +1,26 @@
+<form action="#" method="post" enctype="multipart/form-data" data-j-form>
+	<div class="row">
+		<div class="col col-sm-6">
+			<label for="task-name">{{loc task.task.name}}</label>
+			<input type="text" name="name" id="task-name" value="{{$task.name}}">
+		</div>
+		<div class="col col-sm-2">
+			<label for="task-done">{{loc task.task.done}}</label>
+			<input type="checkbox" name="done" id="task-done" {{if $task.done}}checked{{/if}}>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col col-12">
+			<label for="task-description">{{loc task.task.description}}</label>
+			<textarea type="text" name="description" id="task-description">{{$task.description}}</textarea>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col col-2">
+			<input type="submit" class="btn" value="{{loc common.save.btn}}">
+
+		</div>
+	</div>
+</form>

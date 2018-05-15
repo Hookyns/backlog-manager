@@ -3,28 +3,28 @@ const {Entity} = require("unimapperjs/src/Entity");
 const domain = require("../../config").domains.default;
 
 /**
- * @class Project
+ * @class BacklogItem
  * @memberOf App.Domain
  */
-class Project extends Entity {
+class BacklogItem extends Entity {
 
 	constructor(...args) {
 		super(...args);
 
 		/**
-		 * Project Id
+		 * BacklogItem Id
 		 * @type {number}
 		 */
 		this.id;
 
 		/**
-		 * Name of project
+		 * Name of BacklogItem
 		 * @type {string}
 		 */
 		this.name;
 
 		/**
-		 * Project description
+		 * BacklogItem description
 		 * @type {string}
 		 */
 		this.description;
@@ -36,14 +36,14 @@ class Project extends Entity {
 		this.createdOn;
 
 		/**
-		 * Is project deleted?
+		 * Is BacklogItem deleted?
 		 * @type {boolean}
 		 */
 		this.isDeleted;
 	}
 
 	/**
-	 * @param {Project} map
+	 * @param {BacklogItem} map
 	 */
 	static map(map) {
 		map.id = type.number.autoIncrement().primary();
@@ -54,5 +54,5 @@ class Project extends Entity {
 	}
 }
 
-exports.Project = Project;
-domain.entity()(Project);
+exports.BacklogItem = BacklogItem;
+domain.entity()(BacklogItem);

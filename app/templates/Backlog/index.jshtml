@@ -1,0 +1,28 @@
+{{block content}}
+<h1>{{$selectedProjectName}}{{block title}} Backlog{{/block}}</h1>
+
+<ul class="actions">
+	<li>
+		<i class="fa fa-plus"></i>
+		<a href='{{link("insert", "Backlog")}}'>{{loc backlog.create}}</a>
+	</li>
+</ul>
+
+<hr>
+
+<div class="row">
+	<table id="backlog-items" class="display grid table table-striped table-bordered">
+		<thead>
+		<tr>
+			<th>ID</th>
+			<th>{{loc backlog.list.name}}</th>
+			<th>{{loc backlog.list.description}}</th>
+			<th></th>
+		</tr>
+		</thead>
+	</table>
+</div>
+
+{{clientController()}}
+
+{{/block}}

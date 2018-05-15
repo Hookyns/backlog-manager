@@ -1,0 +1,13 @@
+{{block content}}
+<h1>{{block title}}{{loc backlog.new.title}}{{/block}}</h1>
+
+<ul class="actions">
+	<li>
+		<a href='{{link("index")}}'>{{loc common.back.btn}}</a>
+	</li>
+</ul>
+<hr>
+
+{{include "_form.jshtml"}}
+
+{{/block}}

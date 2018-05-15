@@ -16,19 +16,7 @@ class HomeController extends BaseController {
 			homepage: true,
 			user: {
 				age: 17
-			},
-			items: {
-				0: {
-					name: "First"
-				},
-				10: {
-					name: "Second"
-				}
-			},
-			htmlStyledContent: `<header>
-					<h1>Section title</h1>
-					<article>Lorem ipsum dolor sit amet.</article>
-				</header>`
+			}
 		});
 	}
 }

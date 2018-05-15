@@ -1,0 +1,22 @@
+<form action="#" method="post" enctype="multipart/form-data" data-j-form>
+	<div class="row">
+		<div class="col col-sm-6">
+			<label for="backlog-name">{{loc backlog.backlog.name}}</label>
+			<input type="text" name="name" id="backlog-name" value="{{$backlogItem.name}}">
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col col-12">
+			<label for="backlog-description">{{loc backlog.backlog.description}}</label>
+			<textarea type="text" name="description" id="backlog-description">{{$backlogItem.description}}</textarea>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col col-2">
+			<input type="submit" class="btn" value="{{loc common.save.btn}}">
+
+		</div>
+	</div>
+</form>

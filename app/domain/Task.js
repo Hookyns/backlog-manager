@@ -3,31 +3,43 @@ const {Entity} = require("unimapperjs/src/Entity");
 const domain = require("../../config").domains.default;
 
 /**
- * @class Project
+ * @class Task
  * @memberOf App.Domain
  */
-class Project extends Entity {
+class Task extends Entity {
 
 	constructor(...args) {
 		super(...args);
 
 		/**
-		 * Project Id
+		 * Task Id
 		 * @type {number}
 		 */
 		this.id;
 
 		/**
-		 * Name of project
+		 * Backlog item id
+		 * @type {number}
+		 */
+		this.backlogItemId;
+
+		/**
+		 * Name of Task
 		 * @type {string}
 		 */
 		this.name;
 
 		/**
-		 * Project description
+		 * Task description
 		 * @type {string}
 		 */
 		this.description;
+
+		/**
+		 * Byl úkol dokončen?
+		 * @type {boolean}
+		 */
+		this.done;
 
 		/**
 		 * Create date-time
@@ -36,23 +48,35 @@ class Project extends Entity {
 		this.createdOn;
 
 		/**
-		 * Is project deleted?
+		 * Is Task deleted?
 		 * @type {boolean}
 		 */
 		this.isDeleted;
+
+		/**
+		 * Backlog item
+		 * @type {BacklogItem}
+		 */
+		this.backlogItem;
 	}
 
 	/**
-	 * @param {Project} map
+	 * @param {Task} map
 	 */
 	static map(map) {
+		const {BacklogItem} = require("./BacklogItem");
+
 		map.id = type.number.autoIncrement().primary();
 		map.name = type.string.length(150);
+		map.done = type.boolean;
 		map.description = type.string.nullable().length(0);
 		map.createdOn = type.date.now();
 		map.isDeleted = type.boolean.default(false);
+		map.backlogItemId = type.number;
+		map.backlogItem = type.foreign(BacklogItem.name)
+			.withForeign(task => task.backlogItemId);
 	}
 }
 
-exports.Project = Project;
-domain.entity()(Project);
+exports.Task = Task;
+domain.entity()(Task);

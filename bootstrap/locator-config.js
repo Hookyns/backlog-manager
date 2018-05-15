@@ -5,8 +5,9 @@
 module.exports = function(locator) {
 	const types = locator.constructor.ParamType;
 
-	// locator.setHost("nodetask.net:3000"); // Detection of sub-apps and link creation
 	locator.setMainSubdomain("www"); // Default sub-domain which will route to base app; both urls with and without www will work
+
+	locator.addLocation("backlogDetail", "Backlog/detail/$backlogId/$controller[/$action[/$id]]");
 
 	// Default route - let it last
 	locator.addDefaultLocation("[$controller[/$action[/$id]]]");
