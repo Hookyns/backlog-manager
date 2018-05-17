@@ -17,13 +17,14 @@ class BacklogService {
 	/**
 	 * Vrátí DataTableModel
 	 * @param params
+	 * @param projectId
 	 * @returns {DataTableModel}
 	 */
-	async getBacklogItemsDataTable(params) {
+	async getBacklogItemsDataTable(params, projectId) {
 		let searchValue = params["search[value]"];
 
 		let baseQuery = BacklogItem.getAll()
-			.where(bItem => bItem.isDeleted === false)
+			.where(bItem => bItem.isDeleted === false && bItem.projectId === $, projectId)
 			.whereIf(bItem => bItem.name.startsWith($)
 				|| bItem.description.includes($), !!searchValue, searchValue, searchValue);
 
@@ -39,6 +40,8 @@ class BacklogService {
 				bItem.description.slice(0, 100) + (bItem.description.length >= 100 ? "..." : "")
 			])
 			.exec();
+
+		console.log(BacklogItem.domain.__adapter.executedQueries);
 
 		return new DataTableModel(
 			backlogItems,

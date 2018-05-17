@@ -3,7 +3,7 @@
 
 <ul class="actions">
 	<li>
-		<a href='{{link("index", "Task", { backlogId: $backlogId })}}'>{{loc common.back.btn}}</a>
+		<a href='{{link("index", "Task", { backlogId: $backlogId })}}' data-j-link>{{loc common.back.btn}}</a>
 	</li>
 </ul>
 <hr>

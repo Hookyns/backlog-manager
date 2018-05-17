@@ -66,14 +66,7 @@ if (typeof TaskController === "undefined") {
 			this.$tasks.on("click", "a.detail", (e) => {
 				e.preventDefault();
 				let data = this.getRowData($(e.currentTarget));
-				appCtrl.loadPage(appCtrl.url("/Task/detail/" + data[0]));
-			});
-
-			// Výběr
-			this.$tasks.on("click", "a.pick", (e) => {
-				e.preventDefault();
-				let data = this.getRowData($(e.currentTarget));
-				appCtrl.loadPage(appCtrl.url("/Task/pick/" + data[0]));
+				appCtrl.loadPage(appCtrl.url("/Backlog/detail/" + this.viewData.backlogId + "/Task/detail/" + data[0]));
 			});
 		}
 	}

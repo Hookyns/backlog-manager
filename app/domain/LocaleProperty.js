@@ -46,6 +46,10 @@ class LocaleProperty extends Entity {
 		map.value = type.string;
 	}
 
+	/**
+	 * Seeding method
+	 * @returns {Promise<LocaleProperty[]>}
+	 */
 	static async seed() {
 		// Delete existing values
 		await LocaleProperty.removeWhere(e => null);

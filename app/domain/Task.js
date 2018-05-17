@@ -4,6 +4,8 @@ const domain = require("../../config").domains.default;
 
 /**
  * @class Task
+ * @extends Entity
+ * @template {Task}
  * @memberOf App.Domain
  */
 class Task extends Entity {
@@ -15,19 +17,19 @@ class Task extends Entity {
 		 * Task Id
 		 * @type {number}
 		 */
-		this.id;
+		this.id = 0;
 
 		/**
 		 * Backlog item id
 		 * @type {number}
 		 */
-		this.backlogItemId;
+		this.backlogItemId = 0;
 
 		/**
 		 * Name of Task
 		 * @type {string}
 		 */
-		this.name;
+		this.name = "";
 
 		/**
 		 * Task description

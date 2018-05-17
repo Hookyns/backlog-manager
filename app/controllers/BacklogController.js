@@ -24,7 +24,8 @@ class BacklogController extends App.Controllers.BaseController {
 	 * @returns {Promise<void>}
 	 */
 	async getList() {
-		let model = await this.backlogService.getBacklogItemsDataTable(this.request.params);
+		let model = await this.backlogService.getBacklogItemsDataTable(
+			this.request.params, this.session.selectedProjectId);
 
 		return this.json(
 			model.toObject()
@@ -48,6 +49,7 @@ class BacklogController extends App.Controllers.BaseController {
 	async postInsert() {
 		try {
 			let backlogItem = new BacklogItem(this.request.body.fields);
+			backlogItem.projectId = this.session.selectedProjectId;
 			await BacklogItem.insert(backlogItem);
 
 			return this.redirect(

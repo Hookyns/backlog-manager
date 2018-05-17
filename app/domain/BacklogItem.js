@@ -18,6 +18,11 @@ class BacklogItem extends Entity {
 		this.id;
 
 		/**
+		 * Project Id
+		 */
+		this.projectId;
+
+		/**
 		 * Name of BacklogItem
 		 * @type {string}
 		 */
@@ -46,7 +51,11 @@ class BacklogItem extends Entity {
 	 * @param {BacklogItem} map
 	 */
 	static map(map) {
+		const {Project} = require("./Project");
+
 		map.id = type.number.autoIncrement().primary();
+		map.projectId = type.number;
+		map.project = type.foreign(Project.name).withForeign(bi => bi.projectId);
 		map.name = type.string.length(150);
 		map.description = type.string.nullable().length(0);
 		map.createdOn = type.date.now();

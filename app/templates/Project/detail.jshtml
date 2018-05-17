@@ -3,7 +3,7 @@
 
 <ul class="actions">
 	<li>
-		<a href='{{link("index")}}'>{{loc common.back.btn}}</a>
+		<a href='{{link("index")}}' data-j-link>{{loc common.back.btn}}</a>
 	</li>
 	<li>
 		<a href='{{link("delete", "Project", { id: $project.id })}}'

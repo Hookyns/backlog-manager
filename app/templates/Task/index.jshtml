@@ -1,13 +1,13 @@
 {{block content}}
-<h1>{{block title}}Task{{/block}}</h1>
+<h1>{{block title}}{{loc task.index.title}}{{/block}}</h1>
 
 <ul class="actions">
 	<li>
-		<a href='{{locationLink("default", "detail", "Backlog", { id: $backlogId } )}}'>{{loc common.back.btn}}</a>
+		<a href='{{locationLink("default", "detail", "Backlog", { id: $backlogId } )}}' data-j-link>{{loc common.back.btn}}</a>
 	</li>
 	<li>
 		<i class="fa fa-plus"></i>
-		<a href='{{link("insert", "Task", { backlogId: $backlogId })}}'>{{loc task.create}}</a>
+		<a href='{{link("insert", "Task", { backlogId: $backlogId })}}' data-j-link>{{loc task.create}}</a>
 	</li>
 </ul>
 

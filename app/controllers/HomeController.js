@@ -6,17 +6,23 @@ const BaseController = require("./BaseController");
  */
 class HomeController extends BaseController {
 
-	//noinspection JSUnusedGlobalSymbols
+	constructor(IHomeFacade) {
+		super();
+
+		/**
+		 * @type {HomeFacade}
+		 */
+		this.homeFacade = IHomeFacade;
+	}
+
+//noinspection JSUnusedGlobalSymbols
 	/**
 	 * Dashboard
 	 * @description Default homepage with projects and their backlogs overview
 	 */
 	async actionIndex() {
 		return this.view({
-			homepage: true,
-			user: {
-				age: 17
-			}
+			chartsData: await this.homeFacade.getChartsData(this.session.selectedProjectId)
 		});
 	}
 }

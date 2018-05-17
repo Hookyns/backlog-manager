@@ -150,7 +150,8 @@ const applicationConfig = {
 		enabled: false,
 
 		/**
-		 * If you use framework static server and your index page have
+		 * The limit of request per second from same IP
+		 * @description Warn! If you use framework static server and your index page have
 		 * more than 100 links (scripts, styles, images etc.) client will be blocked!
 		 * @default 100
 		 */
@@ -198,7 +199,7 @@ const applicationConfig = {
 		})
 	}
 
-	// You can define your own settings here,.. it'll be available via global Jumbo.Config
+	// You can define your own settings here,.. it'll be available via global Jumbo.config
 };
 
 module.exports = applicationConfig;

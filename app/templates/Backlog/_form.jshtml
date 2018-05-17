@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col col-sm-6">
 			<label for="backlog-name">{{loc backlog.backlog.name}}</label>
-			<input type="text" name="name" id="backlog-name" value="{{$backlogItem.name}}">
+			<input type="text" name="name" id="backlog-name" value="{{$backlogItem.name}}" required>
 		</div>
 	</div>
 

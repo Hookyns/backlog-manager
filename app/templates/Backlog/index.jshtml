@@ -4,7 +4,7 @@
 <ul class="actions">
 	<li>
 		<i class="fa fa-plus"></i>
-		<a href='{{link("insert", "Backlog")}}'>{{loc backlog.create}}</a>
+		<a href='{{link("insert", "Backlog")}}' data-j-link>{{loc backlog.create}}</a>
 	</li>
 </ul>
 

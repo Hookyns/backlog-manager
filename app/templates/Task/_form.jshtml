@@ -2,7 +2,7 @@
 	<div class="row">
 		<div class="col col-sm-6">
 			<label for="task-name">{{loc task.task.name}}</label>
-			<input type="text" name="name" id="task-name" value="{{$task.name}}">
+			<input type="text" name="name" id="task-name" value="{{$task.name}}" required>
 		</div>
 		<div class="col col-sm-2">
 			<label for="task-done">{{loc task.task.done}}</label>
