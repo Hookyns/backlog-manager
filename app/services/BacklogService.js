@@ -41,8 +41,6 @@ class BacklogService {
 			])
 			.exec();
 
-		console.log(BacklogItem.domain.__adapter.executedQueries);
-
 		return new DataTableModel(
 			backlogItems,
 			total,

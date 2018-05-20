@@ -3,8 +3,10 @@
 
 <ul class="actions">
 	<li>
-		<i class="fa fa-plus"></i>
-		<a href='{{link("insert", "Project")}}' data-j-link>{{loc project.create}}</a>
+		<a href='{{link("insert", "Project")}}' data-j-link>
+			<i class="fa fa-plus"></i>
+			{{loc project.create}}
+		</a>
 	</li>
 </ul>
 

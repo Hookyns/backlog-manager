@@ -38,7 +38,7 @@ if (typeof TaskController === "undefined") {
 					{data: "2"},
 					{
 						data: null,
-						defaultContent: `<a href='#' class='detail'>Detail</a>`,
+						defaultContent: `<a href='#' class='detail'><i class='fas fa-eye'></i></a>`,
 						orderable: false
 					},
 				]

@@ -29,11 +29,7 @@ class ProjectController extends App.Controllers.BaseController {
 	 * @returns {Promise<void>}
 	 */
 	async getList() {
-		let model = await this.projectService.getProjectsDataTable(this.request.params);
-
-		return this.json(
-			model.toObject()
-		);
+		return (await this.projectService.getProjectsDataTable(this.request.params)).toObject();
 	}
 
 	/**

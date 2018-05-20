@@ -152,7 +152,23 @@ main {
 
 	.grid {
 		width: 100%;
+		
+		td:last-child {
+			vertical-align: middle;
+			text-align: center;
+
+			.fas {
+				font-size: 1.4em;
+				//padding: 0.3em;
+			}
+		}
 	}
+}
+
+li > a > i.fas {
+	font-size: 0.8em;
+	display: table-cell;
+	vertical-align: middle;
 }
 
 .dataTables_filter, .dataTables_paginate {

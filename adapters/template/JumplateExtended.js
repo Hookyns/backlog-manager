@@ -29,6 +29,6 @@ Jumplate.registerLocalizator(function (key, locale) {
 });
 
 Jumplate.registerHelper("clientController", function(data) {
-	return `<script src="/public/scripts/${this.request.controller}Controller.js"></script>`
+	return `<script src="/public/scripts/controllers/${this.request.controller}Controller.js"></script>`
 		+ `<script>new ${this.request.controller}Controller(${JSON.stringify(data)});</script>`;
 });

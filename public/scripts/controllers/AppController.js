@@ -1,34 +1,33 @@
 class AppController extends uJumbo.Controller {
 	constructor() {
 		super("body"); // Context selector
-		console.log("Constructor called");
 	}
 
 	onInit() {
-		console.log("Init called", arguments);
+		// console.log("Init called", arguments);
 	}
 	onBeforeNavigate(headers) {
-		console.log("onBeforeNavigate", arguments)
+		// console.log("onBeforeNavigate", arguments)
 	}
 	onNavigate(error, response) {
 		if (error) {
 			alert(error.message);
 		}
 
-		console.log("onNavigate", arguments)
+		// console.log("onNavigate", arguments)
 	}
 	onPopState(state) {
-		console.log("onPopState", arguments)
+		// console.log("onPopState", arguments)
 	}
 	onBeforeFormSubmit(data, headers) {
-		console.log("onBeforeFormSubmit", arguments)
+		// console.log("onBeforeFormSubmit", arguments)
 	}
 	onFormSubmit(error, response) {
 		if (error) {
 			alert(error.message);
 		}
 
-		console.log("onFormSubmit", arguments)
+		// console.log("onFormSubmit", arguments)
 	}
 
 	url(url) {

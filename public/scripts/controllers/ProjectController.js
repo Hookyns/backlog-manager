@@ -2,8 +2,6 @@ if (typeof ProjectController === "undefined") {
 	var ProjectController = class ProjectController {
 
 		constructor() {
-			console.log("ProjectControler constructor");
-
 			$(() => {
 				this.$projects = $("#projects");
 				this.initList();
@@ -38,7 +36,8 @@ if (typeof ProjectController === "undefined") {
 					{data: "2"},
 					{
 						data: null,
-						defaultContent: `<a href='#' class='detail'>Detail</a> | <a href='#' class='pick'>Vybrat</a>`,
+						defaultContent: `<a href='#' class='detail'><i class='fas fa-eye'></i></a> &nbsp; `
+							+ `<a href='#' class='pick' title='Vybrat' data-j-prevent><i class="fas fa-paperclip"></i></a>`,
 						orderable: false
 					},
 				]
@@ -73,9 +72,9 @@ if (typeof ProjectController === "undefined") {
 			this.$projects.on("click", "a.pick", (e) => {
 				e.preventDefault();
 				let data = this.getRowData($(e.currentTarget));
-				appCtrl.loadPage(appCtrl.url("/Project/pick/" + data[0]));
+				location.href = appCtrl.url("/Project/pick/" + data[0]);
+				// appCtrl.loadPage(appCtrl.url("/Project/pick/" + data[0]));
 			});
 		}
 	}
 }
-console.log("ProjectControler.js loaded");
