@@ -15,7 +15,7 @@ class HomeController extends BaseController {
 		this.homeFacade = IHomeFacade;
 	}
 
-//noinspection JSUnusedGlobalSymbols
+	//noinspection JSUnusedGlobalSymbols
 	/**
 	 * Dashboard
 	 * @description Default homepage with projects and their backlogs overview

@@ -6,6 +6,12 @@ module.exports = [
 	// Submenu
 	new LocaleProperty({ locale: "cs-CZ", locKey: "project.submenu.title", value: "PROJEKTY" }),
 
+	// Dashboard
+	new LocaleProperty({ locale: "cs-CZ", locKey: "home.shield.total.projects", value: "Počet projektů" }),
+	new LocaleProperty({ locale: "cs-CZ", locKey: "home.shield.total.backlogItems", value: "Celkový počet backlog itemů" }),
+	new LocaleProperty({ locale: "cs-CZ", locKey: "home.shield.total.tasks", value: "Celkový počet úkolů" }),
+	new LocaleProperty({ locale: "cs-CZ", locKey: "home.shield.project.tasks", value: "Stav úkolů aktivního projektu" }),
+
 	// Projekt
 	new LocaleProperty({ locale: "cs-CZ", locKey: "project.index.title", value: "Projekty" }),
 	new LocaleProperty({ locale: "cs-CZ", locKey: "project.new.title", value: "Nový projekt" }),

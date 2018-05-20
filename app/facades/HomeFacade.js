@@ -3,6 +3,7 @@ const BacklogItem = App.Domain.BacklogItem;
 const Task = App.Domain.Task;
 
 /**
+ * Facade for Home page / Dashboard
  * @class HomeFacade
  * @memberOf App.Facades
  */
@@ -17,20 +18,22 @@ class HomeFacade {
 	// 	this.taskService = ITaskService;
 	// }
 
+	/**
+	 * Get model with data for dashboard
+	 * @param projectId
+	 * @returns {Promise<{totalProjects: *, totalBacklogItems: *, totalTasks: *, waitingTasks: *, doneTasks: *}>}
+	 */
 	async getChartsData(projectId) {
+		/*
+		 * All the queries should be in services.
+		 * This facade should just build model.
+		 * For simplification of this demo it's here.
+		 * It will be refactored if demo grows.
+		 */
+
 		let backlogItems = await BacklogItem.getAll()
 			.where(b => b.projectId === $, projectId)
 			.map(b => b.id)
-			.exec();
-
-		let waitingTasksCount = await Task.getAll()
-			.where(t => t.done === false && t.backlogItemId in $, backlogItems)
-			.count()
-			.exec();
-
-		let doneTasksCount = await Task.getAll()
-			.where(t => t.done === true)
-			.count()
 			.exec();
 
 		return {
@@ -49,22 +52,16 @@ class HomeFacade {
 				.count()
 				.exec(),
 
-			projectTasks: {
-				labels: ["Waitig", "Done"],
-				datasets: [{
-					label: 'Tasks progress',
-					data: [waitingTasksCount, doneTasksCount],
-					backgroundColor: [
-						'rgba(255, 99, 132, 0.2)',
-						'rgba(54, 162, 235, 0.2)'
-					],
-					borderColor: [
-						'rgba(255,99,132,1)',
-						'rgba(54, 162, 235, 1)'
-					],
-					borderWidth: 1
-				}]
-			}
+			waitingTasks: await Task.getAll()
+				.where(t => t.done === false && t.backlogItemId in $, backlogItems)
+				// .where(t => t.done === false && t.backlogItem.projectId === $, projectId) // Will be possible in later UniMapperJS update
+				.count()
+				.exec(),
+
+			doneTasks: await Task.getAll()
+				.where(t => t.done === true)
+				.count()
+				.exec()
 		}
 	}
 }

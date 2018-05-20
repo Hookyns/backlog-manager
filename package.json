@@ -14,7 +14,7 @@
 		"jumbo-core": "^0.2.11",
 		"jumbo-template": "^0.2.2",
 		"mysql2": "^1.5.3",
-		"unimapperjs": "^1.1.4"
+		"unimapperjs": "^1.1.10"
 	},
 	"devDependencies": {
 		"less-watch-compiler": "^1.11.0"

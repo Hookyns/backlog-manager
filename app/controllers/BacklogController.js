@@ -1,7 +1,6 @@
 const BacklogItem = App.Domain.BacklogItem;
 
 /**
- * TODO: Describe your controller
  * @class BacklogController
  * @memberOf App.Controllers
  */
@@ -24,12 +23,8 @@ class BacklogController extends App.Controllers.BaseController {
 	 * @returns {Promise<void>}
 	 */
 	async getList() {
-		let model = await this.backlogService.getBacklogItemsDataTable(
-			this.request.params, this.session.selectedProjectId);
-
-		return this.json(
-			model.toObject()
-		);
+		return (await this.backlogService.getBacklogItemsDataTable(
+			this.request.params, this.session.selectedProjectId)).toObject();
 	}
 
 	/**
@@ -47,19 +42,12 @@ class BacklogController extends App.Controllers.BaseController {
 	 * @returns {Promise<ViewResult>}
 	 */
 	async postInsert() {
-		try {
-			let backlogItem = new BacklogItem(this.request.body.fields);
-			backlogItem.projectId = this.session.selectedProjectId;
-			await BacklogItem.insert(backlogItem);
+		this.backlogService.insert(this.session.selectedProjectId, this.request.body.fields);
 
-			return this.redirect(
-				this.url.action("detail")
-					.params({id: backlogItem.id})
-			);
-		} catch (e) {
-			this.logError(e);
-			return this.getInsert();
-		}
+		this.redirect(
+			this.url.action("detail")
+				.params({id: backlogItem.id})
+		);
 	}
 
 	/**
@@ -68,11 +56,7 @@ class BacklogController extends App.Controllers.BaseController {
 	 * @returns {Promise<ViewResult>}
 	 */
 	async getDetail(id) {
-		let backlogItem = await BacklogItem.getById(id);
-
-		if (!backlogItem) {
-			return this.error("BacklogItem not exists", 404);
-		}
+		let backlogItem = await BacklogItem.getByIdOrThrow(id);
 
 		return this.view({
 			backlogItem: backlogItem
@@ -85,24 +69,12 @@ class BacklogController extends App.Controllers.BaseController {
 	 * @returns {Promise<ViewResult>}
 	 */
 	async postDetail(id) {
-		let backlogItem = await BacklogItem.getById(id);
+		this.backlogService.update(id, this.request.body.fields);
 
-		if (!backlogItem) {
-			return this.error("BacklogItem not exists", 404);
-		}
-
-		try {
-			backlogItem.mapFrom(this.request.body.fields);
-			await backlogItem.save();
-
-			return this.redirect(
-				this.url.action("detail")
-					.params({id: id})
-			);
-		} catch (e) {
-			this.logError(e);
-			return this.getDetail(id);
-		}
+		this.redirect(
+			this.url.action("detail")
+				.params({id: id})
+		);
 	}
 
 	/**
@@ -111,20 +83,11 @@ class BacklogController extends App.Controllers.BaseController {
 	 * @returns {Promise<*>}
 	 */
 	async actionDelete(id) {
-		let backlogItem = await BacklogItem.getById(id);
+		let backlogItem = await BacklogItem.getByIdOrThrow(id);
+		backlogItem.isDeleted = true;
+		await backlogItem.save();
 
-		if (!backlogItem) {
-			return this.error("BacklogItem not exists", 404);
-		}
-
-		try {
-			backlogItem.isDeleted = true;
-			await backlogItem.save();
-		} catch (error) {
-			this.logError(error);
-		}
-
-		return this.redirect(
+		this.redirect(
 			this.url.action("index")
 		);
 	}

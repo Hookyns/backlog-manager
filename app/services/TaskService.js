@@ -8,13 +8,6 @@ const Task = App.Domain.Task;
 class TaskService {
 
 	/**
-	 * Ctor
-	 */
-	constructor() {
-
-	}
-
-	/**
 	 * Insert new Task
 	 * @param backlogId
 	 * @param fields
@@ -24,9 +17,26 @@ class TaskService {
 		let task = new Task(fields);
 
 		task.backlogItemId = backlogId;
-		task.done = !!fields.done;
+		task.done = "done" in fields ? !!fields.done : false;
 
 		await Task.insert(task);
+
+		return task;
+	}
+
+	/**
+	 * Update Task
+	 * @param id
+	 * @param fields
+	 * @returns {Promise<any>}
+	 */
+	async update(id, fields) {
+		let task = await Task.getByIdOrThrow(id);
+
+		task.mapFrom(fields);
+		task.done = "done" in fields ? !!fields.done : false;
+
+		await task.save();
 
 		return task;
 	}

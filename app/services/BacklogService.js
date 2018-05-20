@@ -8,10 +8,37 @@ const BacklogItem = App.Domain.BacklogItem;
 class BacklogService {
 
 	/**
-	 * Ctor
+	 * Insert new Backlog Item
+	 * @param projectId
+	 * @param fields
+	 * @returns {Promise<App.Domain.BacklogItem>}
 	 */
-	constructor() {
+	async insert(projectId, fields) {
+		let bItem = new BacklogItem(fields);
 
+		bItem.projectId = projectId;
+		bItem.done = "done" in fields ? !!fields.done : false;
+
+		await BacklogItem.insert(bItem);
+
+		return bItem;
+	}
+
+	/**
+	 * Update Backlog Item
+	 * @param id
+	 * @param fields
+	 * @returns {Promise<any>}
+	 */
+	async update(id, fields) {
+		let bItem = await BacklogItem.getByIdOrThrow(id);
+
+		bItem.mapFrom(fields);
+		bItem.done = "done" in fields ? !!fields.done : false;
+
+		await bItem.save();
+
+		return bItem;
 	}
 
 	/**

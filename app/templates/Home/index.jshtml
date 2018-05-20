@@ -1,6 +1,39 @@
 {{block content}}
-	<h1>{{block title}}Dashboard{{/block}}</h1>
 
+<h1>{{block title}}Dashboard{{/block}}</h1>
 
-	{{clientController($chartsData)}}
+<div class="row shields">
+	<div class="shield col col-lg-3 col-sm-6">
+		<div class="shield color-project">
+			<span class="title">{{loc home.shield.total.projects}}</span>
+			<span class="num">{{$chartsData.totalProjects}}</span>
+		</div>
+	</div>
+
+	<div class="shield col col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+		<div class="shield color-backlog">
+			<span class="title">{{loc home.shield.total.backlogItems}}</span>
+			<span class="num">{{$chartsData.totalBacklogItems}}</span>
+		</div>
+	</div>
+
+	<div class="shield col col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12">
+		<div class="shield color-task">
+			<span class="title">{{loc home.shield.total.tasks}}</span>
+			<span class="num">{{$chartsData.totalTasks}}</span>
+		</div>
+	</div>
+</div>
+
+{{if $selectedProjectName}}
+<div class="row shields">
+	<div class="col col-xl-4 col-lg-6 col-md-6 col-sm-12 col-12">
+		<h2>{{loc home.shield.project.tasks}}</h2>
+		<canvas id="tasks-pie"></canvas>
+	</div>
+</div>
+{{/if}}
+
+{{clientController($chartsData)}}
+
 {{/block}}

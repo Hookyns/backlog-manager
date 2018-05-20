@@ -17,19 +17,19 @@ class Task extends Entity {
 		 * Task Id
 		 * @type {number}
 		 */
-		this.id = 0;
+		this.id;
 
 		/**
 		 * Backlog item id
 		 * @type {number}
 		 */
-		this.backlogItemId = 0;
+		this.backlogItemId;
 
 		/**
 		 * Name of Task
 		 * @type {string}
 		 */
-		this.name = "";
+		this.name;
 
 		/**
 		 * Task description

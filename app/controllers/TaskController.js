@@ -1,7 +1,6 @@
 const Task = App.Domain.Task;
 
 /**
- * TODO: Describe your controller
  * @class TaskController
  * @memberOf App.Controllers
  */
@@ -26,11 +25,7 @@ class TaskController extends App.Controllers.BaseController {
 	 * @returns {Promise<void>}
 	 */
 	async getList() {
-		let model = await this.taskService.getTasksDataTable(this.request.params);
-
-		return this.json(
-			model.toObject()
-		);
+		return (await this.taskService.getTasksDataTable(this.request.params)).toObject();
 	}
 
 	/**
@@ -49,17 +44,13 @@ class TaskController extends App.Controllers.BaseController {
 	 * @returns {Promise<ViewResult>}
 	 */
 	async postInsert(backlogId) {
-		try {
-			let task = await this.taskService.insert(backlogId, this.request.body.fields);
+		let task = await this.taskService.insert(backlogId, this.request.body.fields);
 
-			return this.redirect(
-				this.url.action("detail")
-					.params({id: task.id, backlogId: backlogId})
-			);
-		} catch (e) {
-			this.logError(e);
-			return this.getInsert(backlogId);
-		}
+		this.redirect(
+			this.url.action("detail")
+				.location("backlogDetail")
+				.params({id: task.id, backlogId: backlogId})
+		);
 	}
 
 	/**
@@ -69,11 +60,7 @@ class TaskController extends App.Controllers.BaseController {
 	 * @returns {Promise<ViewResult>}
 	 */
 	async getDetail(backlogId, id) {
-		let task = await Task.getById(id);
-
-		if (!task) {
-			return this.error("Task not exists", 404);
-		}
+		let task = await Task.getByIdOrThrow(id);
 
 		return this.view({
 			task: task,
@@ -88,49 +75,29 @@ class TaskController extends App.Controllers.BaseController {
 	 * @returns {Promise<ViewResult>}
 	 */
 	async postDetail(backlogId, id) {
-		let task = await Task.getById(id);
+		await this.taskService.update(id, this.request.body.fields);
 
-		if (!task) {
-			return this.error("Task not exists", 404);
-		}
-
-		try {
-			let fields = this.request.body.fields;
-			task.mapFrom(fields);
-			task.done = !!fields.done;
-			await task.save();
-
-			return this.redirect(
-				this.url.action("detail")
-					.params({id: id, backlogId: backlogId})
-			);
-		} catch (e) {
-			this.logError(e);
-			return this.getDetail(backlogId, id);
-		}
+		this.redirect(
+			this.url.action("detail")
+				.params({id: id, backlogId: backlogId})
+		);
 	}
 
 	/**
 	 * DELETE task item
+	 * @param backlogId
 	 * @param id
 	 * @returns {Promise<*>}
 	 */
-	async actionDelete(id) {
-		let task = await Task.getById(id);
+	async actionDelete(backlogId, id) {
+		let task = await Task.getByIdOrThrow(id);
+		task.isDeleted = true;
+		await task.save();
 
-		if (!task) {
-			return this.error("Task not exists", 404);
-		}
-
-		try {
-			task.isDeleted = true;
-			await task.save();
-		} catch (error) {
-			this.logError(error);
-		}
-
-		return this.redirect(
+		this.redirect(
 			this.url.action("index")
+				.location("backlogDetail")
+				.params({backlogId: backlogId})
 		);
 	}
 }

@@ -7,13 +7,6 @@ const Project = App.Domain.Project;
 class ProjectService {
 
 	/**
-	 * Ctor
-	 */
-	constructor() {
-
-	}
-
-	/**
 	 * Vrátí DataTableModel
 	 * @param params
 	 * @returns {DataTableModel}

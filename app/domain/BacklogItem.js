@@ -45,6 +45,12 @@ class BacklogItem extends Entity {
 		 * @type {boolean}
 		 */
 		this.isDeleted;
+
+		/**
+		 * Was backlog item done?
+		 * @type {boolean}
+		 */
+		this.done;
 	}
 
 	/**
@@ -59,6 +65,7 @@ class BacklogItem extends Entity {
 		map.name = type.string.length(150);
 		map.description = type.string.nullable().length(0);
 		map.createdOn = type.date.now();
+		map.done = type.boolean;
 		map.isDeleted = type.boolean.default(false);
 	}
 }

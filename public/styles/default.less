@@ -152,7 +152,7 @@ main {
 
 	.grid {
 		width: 100%;
-		
+
 		td:last-child {
 			vertical-align: middle;
 			text-align: center;
@@ -169,6 +169,51 @@ li > a > i.fas {
 	font-size: 0.8em;
 	display: table-cell;
 	vertical-align: middle;
+}
+
+.shields {
+	margin: 20px 20px;
+
+	h2 {
+		font-size: 1.5rem;
+		text-align: center;
+	}
+
+	.shield {
+		color: #fff;
+		padding: 10px;
+
+		.shield {
+			//margin: 10px;
+			height: 150px;
+
+			&.color-project {
+				background-color: #17a2b8;
+			}
+
+			&.color-backlog {
+				background-color: #fabb3d;
+			}
+
+			&.color-task {
+				background-color: #79c447;
+			}
+
+			.title {
+				display: block;
+				width: 100%;
+				overflow: hidden;
+				text-overflow: ellipsis;
+				text-align: center;
+			}
+
+			.num {
+				display: block;
+				font-size: 4rem;
+				text-align: center;
+			}
+		}
+	}
 }
 
 .dataTables_filter, .dataTables_paginate {

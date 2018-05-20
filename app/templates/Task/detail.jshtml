@@ -9,7 +9,7 @@
 		</a>
 	</li>
 	<li>
-		<a href='{{link("delete", "Task", { id: $task.id })}}'
+		<a href='{{link("delete", "Task", { id: $task.id, backlogId: $backlogId })}}'
 		   onclick="return confirm('{{loc common.delete.confirmation}}')">
 			<i class="fas fa-trash"></i>
 			{{loc common.delete.btn}}
