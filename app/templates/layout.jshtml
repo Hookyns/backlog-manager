@@ -16,7 +16,7 @@
 
 	<script src="/public/data-tables/datatables.min.js"></script>
 	<script src="/public/scripts/chart.bundle.js"></script>
-	<script src="/public/uJumbo/ujumbo.js"></script>
+	<script src="/public/scripts/ujumbo.js"></script>
 	<script src="/public/scripts/controllers/AppController.js"></script>
 
 	<title>{{defined title}}{{include title}} | {{/defined}}Node Task Manager | JumboJS DEMO</title>

@@ -1,0 +1,196 @@
+* {
+  box-sizing: border-box;
+  border-radius: 0 !important;
+}
+img {
+  border: 0;
+  outline: 0;
+}
+html,
+body,
+p,
+form,
+ul,
+li,
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  padding: 0;
+}
+html,
+body {
+  height: 100%;
+}
+html {
+  font: normal 1rem 'Segoe UI';
+  font-family: 'Segoe UI', 'Open Sans', 'Roboto', Arial, sans-serif;
+  color: #333;
+}
+html body {
+  background: #fafafa;
+  padding-top: 60px;
+}
+html body h1,
+html body h2 {
+  font-weight: 300;
+  font-family: 'Open Sans', Arial, sans-serif;
+  margin: 0.25em 0 0.4em 0;
+}
+html body > .header {
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  height: 60px;
+  background: #ecedf0;
+  line-height: 60px;
+  padding-left: 1rem;
+  border-bottom: 1px solid #ddd;
+  font-weight: 300;
+  z-index: 10;
+}
+html body > .header img.jumbo-icon {
+  width: auto;
+  height: 30px;
+}
+html body > .sub-header {
+  width: 100%;
+  padding-top: 0.5em;
+  overflow: hidden;
+  padding-bottom: 0.5em;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #eaeaea;
+}
+html body > .sub-header ul {
+  list-style-type: none;
+}
+html body > .sub-header ul li {
+  float: left;
+  padding: 0 1em;
+  text-transform: uppercase;
+}
+html body a {
+  color: #333;
+}
+html body a:hover {
+  color: #278060;
+  text-decoration: none;
+}
+main {
+  padding: 1rem;
+}
+main > h1 {
+  font-size: 2.5rem;
+}
+main > hr {
+  margin-right: 15px;
+}
+main form .col > label {
+  display: block;
+  width: 100%;
+}
+main form .col > input,
+main form .col > textarea,
+main form .col > select {
+  display: block;
+  width: 100%;
+}
+main form input,
+main form select,
+main form textarea {
+  background-color: #fcfcfc;
+  border: 1px solid #c0c0c0;
+  padding: 0.5em;
+  font-size: 0.8rem;
+}
+main form input,
+main form select {
+  height: 2rem;
+  line-height: 2rem;
+}
+main form textarea {
+  min-height: 4em;
+}
+main form .btn {
+  border-radius: 0;
+  background: #419778;
+  color: #fff;
+  padding: 0;
+}
+main .row {
+  margin-top: 10px;
+}
+main ul.actions {
+  list-style-type: none;
+  overflow: hidden;
+  margin-top: -2.5rem;
+  padding-right: 15px;
+}
+main ul.actions li {
+  margin-left: 20px;
+  display: inline-block;
+  float: right;
+}
+main .grid {
+  width: 100%;
+}
+main .grid td:last-child {
+  vertical-align: middle;
+  text-align: center;
+}
+main .grid td:last-child .fas {
+  font-size: 1.4em;
+}
+li > a > i.fas {
+  font-size: 0.8em;
+  display: table-cell;
+  vertical-align: middle;
+}
+.shields {
+  margin: 20px 20px;
+}
+.shields h2 {
+  font-size: 1.5rem;
+  text-align: center;
+}
+.shields .shield {
+  color: #fff;
+  padding: 10px;
+}
+.shields .shield .shield {
+  height: 150px;
+}
+.shields .shield .shield.color-project {
+  background-color: #17a2b8;
+}
+.shields .shield .shield.color-backlog {
+  background-color: #fabb3d;
+}
+.shields .shield .shield.color-task {
+  background-color: #79c447;
+}
+.shields .shield .shield .title {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+.shields .shield .shield .num {
+  display: block;
+  font-size: 4rem;
+  text-align: center;
+}
+.dataTables_filter,
+.dataTables_paginate {
+  padding-right: 15px;
+}
+.j-fade-out {
+  opacity: 0;
+}
+.j-fade-in {
+  transition: 300ms;
+  opacity: 1;
+}
