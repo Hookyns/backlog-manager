@@ -6,6 +6,7 @@ Example application as showcase of JumboJS framework.
 - clone this repo
 - cd into project
 - edit config.json file (at least DB connection properties)
+- `npm install`
 - `npm run create-migration`
 - `npm run run-migration`
 - `npm run seeding`

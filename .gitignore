@@ -1,6 +1,7 @@
 node_modules
 .idea
 *.css
-migrations
+migrations/*
 temp
 !*.gitkeep
+package-lock.json
