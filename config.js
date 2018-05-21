@@ -171,7 +171,17 @@ const applicationConfig = {
 		/**
 		 * Allow using languages
 		 */
-		enabled: true
+		enabled: true,
+
+		/**
+		 * Supported languages
+		 */
+		supportedLocales: ["cs-CZ"],
+
+		/**
+		 * Default language
+		 */
+		defaultLocale: "cs-CZ"
 	},
 
 	/**

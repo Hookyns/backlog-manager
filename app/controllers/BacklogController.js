@@ -42,7 +42,7 @@ class BacklogController extends App.Controllers.BaseController {
 	 * @returns {Promise<ViewResult>}
 	 */
 	async postInsert() {
-		this.backlogService.insert(this.session.selectedProjectId, this.request.body.fields);
+		let backlogItem = await this.backlogService.insert(this.session.selectedProjectId, this.request.body.fields);
 
 		this.redirect(
 			this.url.action("detail")
@@ -69,7 +69,7 @@ class BacklogController extends App.Controllers.BaseController {
 	 * @returns {Promise<ViewResult>}
 	 */
 	async postDetail(id) {
-		this.backlogService.update(id, this.request.body.fields);
+		await this.backlogService.update(id, this.request.body.fields);
 
 		this.redirect(
 			this.url.action("detail")

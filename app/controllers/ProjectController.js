@@ -29,7 +29,8 @@ class ProjectController extends App.Controllers.BaseController {
 	 * @returns {Promise<void>}
 	 */
 	async getList() {
-		return (await this.projectService.getProjectsDataTable(this.request.params)).toObject();
+		return (await this.projectService.getProjectsDataTable(this.request.params))
+			.toObject();
 	}
 
 	/**
@@ -38,15 +39,10 @@ class ProjectController extends App.Controllers.BaseController {
 	 * @returns {Promise<void>}
 	 */
 	async actionPick(id) {
-		let project = await Project.getById(id);
-
-		if (!project) {
-			return this.error("Project not exists", 404);
-		}
-
+		let project = await Project.getByIdOrThrow(id);
 		this.session.selectedProjectId = project.id;
 
-		return this.redirect(
+		this.redirect(
 			this.url.action("index", "Backlog")
 		);
 	}
@@ -65,29 +61,20 @@ class ProjectController extends App.Controllers.BaseController {
 	 * @returns {Promise<*>}
 	 */
 	async postInsert() {
-		try {
-			let project = new Project(this.request.body.fields);
-			await Project.insert(project);
+		let project = new Project(this.request.body.fields);
+		await Project.insert(project);
 
-			return this.redirect(
-				this.url.action("detail")
-					.params({id: project.id})
-			);
-		} catch (e) {
-			this.logError(e);
-			return this.getInsert();
-		}
+		this.redirect(
+			this.url.action("detail")
+				.params({id: project.id})
+		);
 	}
 
 	/**
 	 * GET Project detail
 	 */
 	async getDetail(id) {
-		let project = await Project.getById(id);
-
-		if (!project) {
-			return this.error("Project not exists", 404);
-		}
+		let project = await Project.getByIdOrThrow(id);
 
 		return this.view({
 			project: project
@@ -98,24 +85,15 @@ class ProjectController extends App.Controllers.BaseController {
 	 * POST Project detail
 	 */
 	async postDetail(id) {
-		let project = await Project.getById(id);
+		let project = await Project.getByIdOrThrow(id);
 
-		if (!project) {
-			return this.error("Project not exists", 404);
-		}
+		project.mapFrom(this.request.body.fields);
+		await project.save();
 
-		try {
-			project.mapFrom(this.request.body.fields);
-			await project.save();
-
-			return this.redirect(
-				this.url.action("detail")
-					.params({id: id})
-			);
-		} catch (e) {
-			this.logError(e);
-			return this.getDetail(id);
-		}
+		return this.redirect(
+			this.url.action("detail")
+				.params({id: id})
+		);
 	}
 
 	/**
@@ -124,20 +102,16 @@ class ProjectController extends App.Controllers.BaseController {
 	 * @returns {Promise<void>}
 	 */
 	async actionDelete(id) {
-		let project = await Project.getById(id);
+		let project = await Project.getByIdOrThrow(id);
 
-		if (!project) {
-			return this.error("Project not exists", 404);
+		project.isDeleted = true;
+		await project.save();
+
+		if (this.session.selectedProjectId == id) {
+			this.session.selectedProjectId = undefined;
 		}
 
-		try {
-			project.isDeleted = true;
-			await project.save();
-		} catch (error) {
-			this.logError(error);
-		}
-
-		return this.redirect(
+		this.redirect(
 			this.url.action("index")
 		);
 	}
