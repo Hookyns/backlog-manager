@@ -1,5 +1,5 @@
 /**
- * Dependency registrar - registration of Types
+ * Dependency registrar - registration of services
  * @param {DIContainer} container
  */
 

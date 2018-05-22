@@ -102,4 +102,4 @@ class TaskController extends App.Controllers.BaseController {
 	}
 }
 
-module.exports = TaskController;
+module.exports.TaskController = TaskController;

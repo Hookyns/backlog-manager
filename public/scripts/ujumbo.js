@@ -474,12 +474,12 @@ var uJumbo = (function () {
 					uJumbo.addEvent(item.element, item.event, function (e) {
 						args[ei - 1] = e || window.event;
 
-						if (!self.prototype[fnName]) {
+						if (!self[fnName]) {
 							console.error("Method", fnName, "doesn't exists in your controller", this.constructor.name);
 							return false;
 						}
 
-						return self.prototype[fnName].apply(self, args);
+						return self[fnName].apply(self, args);
 					});
 				});
 			})(this.events[e]);

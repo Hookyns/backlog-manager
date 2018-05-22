@@ -124,7 +124,7 @@ const applicationConfig = {
 		/**
 		 * @default Normal
 		 */
-		level: $cfg.LogLevels.Talkative
+		level: $cfg.LogLevels.Warning
 	},
 
 	/**

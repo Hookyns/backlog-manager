@@ -1,5 +1,7 @@
-if (typeof AppController === "undefined") {
-	var AppController = class extends uJumbo.Controller {
+(function(scope) {
+	if (scope.AppController) return;
+
+	var AppController = scope.AppController = class extends uJumbo.Controller {
 		constructor() {
 			super("body"); // Context selector
 		}
@@ -46,7 +48,7 @@ if (typeof AppController === "undefined") {
 
 			return "/" + locale + url;
 		}
-	}
+	};
 
-	var appCtrl = new AppController();
-}
+	scope.appCtrl = new AppController();
+})(window);
