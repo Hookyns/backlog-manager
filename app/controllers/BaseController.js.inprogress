@@ -7,11 +7,12 @@ const Project = App.Domain.Project;
  * @memberOf App.Controllers
  */
 class BaseController extends Controller {
-	// /**
-	//  * Called before each action
-	//  */
-	// async beforeActions() {
-	// }
+	/**
+	 * Called before each action
+	 */
+	async beforeActions() {
+		this.extendViewModel(await this.projectViewInfo());
+	}
 
 	// Add your own methods...
 
@@ -24,24 +25,13 @@ class BaseController extends Controller {
 	}
 
 	/**
-	 * Override
-	 * @param viewOrData
-	 * @param data
-	 */
-	async view(viewOrData, data) {
-		let result = super.view(viewOrData, data);
-		result.data = await this.addInfo(result.data);
-		return result;
-	}
-
-	/**
 	 * Add default view info into model
 	 * @param model
 	 * @returns {{selectedProjectName: any} & any}
 	 */
-	async addInfo(model) {
+	async projectViewInfo() {
 
-		// TODO: Vytvořit beforeRender() metodu, která se bude volat před každou akcí, kde tohle bude mocu programátor řešit.
+		// TODO: Create beforeRender() in jumbo-core
 
 		let obj = {};
 
@@ -53,9 +43,7 @@ class BaseController extends Controller {
 			}
 		}
 
-		// let session = this.session || (this.session = {});
-
-		return Object.assign(obj, model);
+		return obj;
 	}
 }
 
